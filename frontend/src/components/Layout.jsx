@@ -1,19 +1,11 @@
 import { Link } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import { logout } from '../store/slices/authSlice';
 import { useLanguage } from '../contexts/LanguageContext';
 import LanguageSwitcher from './LanguageSwitcher';
 
 const categories = ['uzbekistan', 'education', 'finance', 'auto', 'world'];
 
 const Layout = ({ children }) => {
-  const { isAuthenticated, user } = useSelector((state) => state.auth);
-  const dispatch = useDispatch();
   const { t } = useLanguage();
-
-  const handleLogout = () => {
-    dispatch(logout());
-  };
 
   const categoryLabels = {
     uzbekistan: t('uzbekistan'),
@@ -29,8 +21,11 @@ const Layout = ({ children }) => {
       <header className="bg-white shadow-md sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <Link to="/" className="text-2xl font-bold text-blue-600">
-              {t('home')}
+            <Link to="/" className="flex items-center gap-1.5 group">
+              <span className="text-xl md:text-2xl font-bold tracking-tight">
+                <span className="text-red-600">INSIDER</span>
+                <span className="text-gray-800"> MEDIA</span>
+              </span>
             </Link>
             <nav className="hidden md:flex space-x-6">
               {categories.map((category) => (
@@ -45,23 +40,6 @@ const Layout = ({ children }) => {
             </nav>
             <div className="flex items-center space-x-4">
               <LanguageSwitcher />
-              {isAuthenticated && (
-                <>
-                  <Link
-                    to="/admin/dashboard"
-                    className="text-gray-700 hover:text-blue-600 transition-colors"
-                  >
-                    {t('dashboard')}
-                  </Link>
-                  <span className="text-gray-600">{t('home')}, {user?.username}</span>
-                  <button
-                    onClick={handleLogout}
-                    className="btn-secondary text-sm"
-                  >
-                    {t('logout')}
-                  </button>
-                </>
-              )}
             </div>
           </div>
           

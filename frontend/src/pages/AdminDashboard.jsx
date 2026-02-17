@@ -232,7 +232,7 @@ const AdminDashboard = () => {
                 </select>
               </div>
 
-              <div className="mb-4">
+              {/* <div className="mb-4">
                 <label className="block text-gray-700 mb-2">{t('image')}</label>
                 <input
                   type="file"
@@ -245,7 +245,7 @@ const AdminDashboard = () => {
                     Current image: {editingNews.image_url}
                   </p>
                 )}
-              </div>
+              </div> */}
 
               <div className="mb-4">
                 <label className="block text-gray-700 mb-2">{t('content')}</label>

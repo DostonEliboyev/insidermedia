@@ -15,7 +15,7 @@ const NewsCard = ({ news }) => {
       {news.image_url && (
         <div className="w-full h-48 overflow-hidden">
           <img
-            src={`http://localhost:5000${news.image_url}`}
+            src={`${window.location.origin}${news.image_url}`}
             alt={news.title}
             className="w-full h-full object-cover"
           />

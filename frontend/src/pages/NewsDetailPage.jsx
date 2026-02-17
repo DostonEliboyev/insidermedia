@@ -56,7 +56,7 @@ const NewsDetailPage = () => {
         <meta property="og:title" content={currentNews.title} />
         <meta property="og:description" content={currentNews.short_description} />
         {currentNews.image_url && (
-          <meta property="og:image" content={`http://localhost:5000${currentNews.image_url}`} />
+          <meta property="og:image" content={`${window.location.origin}${currentNews.image_url}`} />
         )}
       </Helmet>
 
@@ -75,7 +75,7 @@ const NewsDetailPage = () => {
         {currentNews.image_url && (
           <div className="w-full h-96 overflow-hidden rounded-lg mb-6">
             <img
-              src={`http://localhost:5000${currentNews.image_url}`}
+              src={`${window.location.origin}${currentNews.image_url}`}
               alt={currentNews.title}
               className="w-full h-full object-cover"
             />
